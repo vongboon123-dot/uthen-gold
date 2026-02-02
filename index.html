@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ห้างทองอุเทน</title>
+
+<style>
+body{background:black;color:white;text-align:center;font-family:sans-serif}
+.gold{color:gold;font-size:40px}
+.red{color:#ff4d6d;font-size:40px}
+a{color:gold;font-size:20px}
+</style>
+</head>
+
+<body>
+
+<h1>ห้างทองอุเทน ลูกชายแม่กิมกี่</h1>
+
+<h2>ราคาทองวันนี้</h2>
+
+ขายออก
+<div class="gold" id="sell">...</div>
+
+ซื้อเข้า
+<div class="red" id="buy">...</div>
+
+<p>📞 043-811399 | 093-4703995</p>
+
+<p>
+<a href="https://line.me/ti/p/XAjPrxiOmf">
+สั่งจอง/สอบถาม LINE
+</a>
+</p>
+
+<script>
+async function load(){
+let r=await fetch('/api/gold');
+let d=await r.json();
+sell.innerText=d.sell;
+buy.innerText=d.buy;
+}
+load();
+setInterval(load,60000);
+</script>
+
+</body>
+</html>
